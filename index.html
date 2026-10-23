@@ -1,0 +1,1189 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sincronize | Tecnologia em Tempo Real</title>
+    <meta
+      name="description"
+      content="Sincronize — tecnologia em tempo real para conectar pessoas e ampliar o impacto social. Gestão de projetos, doações, voluntários e resultados para o Terceiro Setor."
+    />
+    <meta name="theme-color" content="#07345e" />
+    <meta property="og:title" content="Sincronize | Tecnologia em Tempo Real" />
+    <meta
+      property="og:description"
+      content="Tecnologia que conecta pessoas e transforma realidades."
+    />
+    <meta property="og:image" content="assets/images/logo-sincronize.webp" />
+    <link rel="icon" href="assets/images/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/images/logo-icon-192.png" />
+
+    <!-- Marca o documento como "com JS" antes do primeiro paint (evita piscar nas animações) -->
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Estilos em camadas: tokens → base → componentes → seções -->
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/sections.css" />
+
+    <link
+      rel="preload"
+      as="image"
+      href="assets/images/hero-sala-de-aula.webp"
+    />
+  </head>
+
+  <body>
+    <!-- Ícones (Lucide) embutidos: use <svg class="icon"><use href="#i-NOME"/></svg> -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      style="display: none"
+      aria-hidden="true"
+    >
+      <symbol id="i-menu" viewBox="0 0 24 24">
+        <line x1="4" x2="20" y1="12" y2="12" />
+        <line x1="4" x2="20" y1="6" y2="6" />
+        <line x1="4" x2="20" y1="18" y2="18" />
+      </symbol>
+      <symbol id="i-x" viewBox="0 0 24 24">
+        <path d="M18 6 6 18" />
+        <path d="m6 6 12 12" />
+      </symbol>
+      <symbol id="i-user-round" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="5" />
+        <path d="M20 21a8 8 0 0 0-16 0" />
+      </symbol>
+      <symbol id="i-rocket" viewBox="0 0 24 24">
+        <path
+          d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"
+        />
+        <path
+          d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"
+        />
+        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+      </symbol>
+      <symbol id="i-users-round" viewBox="0 0 24 24">
+        <path d="M18 21a8 8 0 0 0-16 0" />
+        <circle cx="10" cy="8" r="5" />
+        <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3" />
+      </symbol>
+      <symbol id="i-clock-3" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16.5 12" />
+      </symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24">
+        <path
+          d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+        />
+      </symbol>
+      <symbol id="i-shield-check" viewBox="0 0 24 24">
+        <path
+          d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+        />
+        <path d="m9 12 2 2 4-4" />
+      </symbol>
+      <symbol id="i-chevron-left" viewBox="0 0 24 24">
+        <path d="m15 18-6-6 6-6" />
+      </symbol>
+      <symbol id="i-chevron-right" viewBox="0 0 24 24">
+        <path d="m9 18 6-6-6-6" />
+      </symbol>
+      <symbol id="i-arrow-up-right" viewBox="0 0 24 24">
+        <path d="M7 7h10v10" />
+        <path d="M7 17 17 7" />
+      </symbol>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24">
+        <path d="M5 12h14" />
+        <path d="m12 5 7 7-7 7" />
+      </symbol>
+      <symbol id="i-building-2" viewBox="0 0 24 24">
+        <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+        <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+        <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+        <path d="M10 6h4" />
+        <path d="M10 10h4" />
+        <path d="M10 14h4" />
+        <path d="M10 18h4" />
+      </symbol>
+      <symbol id="i-gavel" viewBox="0 0 24 24">
+        <path d="m14.5 12.5-8 8a2.119 2.119 0 1 1-3-3l8-8" />
+        <path d="m16 16 6-6" />
+        <path d="m8 8 6-6" />
+        <path d="m9 7 8 8" />
+        <path d="m21 11-8-8" />
+      </symbol>
+      <symbol id="i-calendar-check" viewBox="0 0 24 24">
+        <path d="M8 2v4" />
+        <path d="M16 2v4" />
+        <rect width="18" height="18" x="3" y="4" rx="2" />
+        <path d="M3 10h18" />
+        <path d="m9 16 2 2 4-4" />
+      </symbol>
+      <symbol id="i-heart-handshake" viewBox="0 0 24 24">
+        <path
+          d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+        />
+        <path
+          d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"
+        />
+        <path d="m18 15-2-2" />
+        <path d="m15 18-2-2" />
+      </symbol>
+      <symbol id="i-chart-no-axes-combined" viewBox="0 0 24 24">
+        <path d="M12 16v5" />
+        <path d="M16 14v7" />
+        <path d="M20 10v11" />
+        <path
+          d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"
+        />
+        <path d="M4 18v3" />
+        <path d="M8 14v7" />
+      </symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24">
+        <path
+          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+        />
+      </symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24">
+        <rect width="20" height="16" x="2" y="4" rx="2" />
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+      </symbol>
+      <symbol id="i-church" viewBox="0 0 24 24">
+        <path d="M10 9h4" />
+        <path d="M12 7v5" />
+        <path d="M14 22v-4a2 2 0 0 0-4 0v4" />
+        <path
+          d="M18 22V5.618a1 1 0 0 0-.553-.894l-4.553-2.277a2 2 0 0 0-1.788 0L6.553 4.724A1 1 0 0 0 6 5.618V22"
+        />
+        <path
+          d="m18 7 3.447 1.724a1 1 0 0 1 .553.894V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.618a1 1 0 0 1 .553-.894L6 7"
+        />
+      </symbol>
+      <symbol id="i-house" viewBox="0 0 24 24">
+        <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+        <path
+          d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+        />
+      </symbol>
+      <symbol id="i-hand-heart" viewBox="0 0 24 24">
+        <path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16" />
+        <path
+          d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"
+        />
+        <path d="m2 15 6 6" />
+        <path
+          d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z"
+        />
+      </symbol>
+      <symbol id="i-heart-pulse" viewBox="0 0 24 24">
+        <path
+          d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+        />
+        <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27" />
+      </symbol>
+      <symbol id="i-sparkles" viewBox="0 0 24 24">
+        <path
+          d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"
+        />
+        <path d="M20 3v4" />
+        <path d="M22 5h-4" />
+        <path d="M4 17v2" />
+        <path d="M5 18H3" />
+      </symbol>
+      <symbol id="i-message-circle" viewBox="0 0 24 24">
+        <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+      </symbol>
+      <symbol id="i-layout-dashboard" viewBox="0 0 24 24">
+        <rect width="7" height="9" x="3" y="3" rx="1" />
+        <rect width="7" height="5" x="14" y="3" rx="1" />
+        <rect width="7" height="9" x="14" y="12" rx="1" />
+        <rect width="7" height="5" x="3" y="16" rx="1" />
+      </symbol>
+      <symbol id="i-file-chart-column" viewBox="0 0 24 24">
+        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+        <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+        <path d="M8 18v-1" />
+        <path d="M12 18v-6" />
+        <path d="M16 18v-3" />
+      </symbol>
+      <symbol id="i-radio" viewBox="0 0 24 24">
+        <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9" />
+        <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5" />
+        <circle cx="12" cy="12" r="2" />
+        <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5" />
+        <path d="M19.1 4.9C23 8.8 23 15.1 19.1 19" />
+      </symbol>
+      <symbol id="i-shirt" viewBox="0 0 24 24">
+        <path
+          d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"
+        />
+      </symbol>
+      <symbol id="i-footprints" viewBox="0 0 24 24">
+        <path
+          d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"
+        />
+        <path
+          d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"
+        />
+        <path d="M16 17h4" />
+        <path d="M4 13h4" />
+      </symbol>
+      <symbol id="i-book-open" viewBox="0 0 24 24">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+      </symbol>
+      <symbol id="i-lamp" viewBox="0 0 24 24">
+        <path d="M8 2h8l4 10H4L8 2Z" />
+        <path d="M12 12v6" />
+        <path d="M8 22v-2c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v2H8Z" />
+      </symbol>
+      <symbol id="i-puzzle" viewBox="0 0 24 24">
+        <path
+          d="M19.439 7.85c-.049.322.059.648.289.878l1.568 1.568c.47.47.706 1.087.706 1.704s-.235 1.233-.706 1.704l-1.611 1.611a.98.98 0 0 1-.837.276c-.47-.07-.802-.48-.968-.925a2.501 2.501 0 1 0-3.214 3.214c.446.166.855.497.925.968a.979.979 0 0 1-.276.837l-1.61 1.61a2.404 2.404 0 0 1-1.705.707 2.402 2.402 0 0 1-1.704-.706l-1.568-1.568a1.026 1.026 0 0 0-.877-.29c-.493.074-.84.504-1.02.968a2.5 2.5 0 1 1-3.237-3.237c.464-.18.894-.527.967-1.02a1.026 1.026 0 0 0-.289-.877l-1.568-1.568A2.402 2.402 0 0 1 1.998 12c0-.617.236-1.234.706-1.704L4.23 8.77c.24-.24.581-.353.917-.303.515.077.877.528 1.073 1.01a2.5 2.5 0 1 0 3.259-3.259c-.482-.196-.933-.558-1.01-1.073-.05-.336.062-.676.303-.917l1.525-1.525A2.402 2.402 0 0 1 12 1.998c.617 0 1.234.236 1.704.706l1.568 1.568c.23.23.556.338.877.29.493-.074.84-.504 1.02-.968a2.5 2.5 0 1 1 3.237 3.237c-.464.18-.894.527-.967 1.02Z"
+        />
+      </symbol>
+      <symbol id="i-shopping-bag" viewBox="0 0 24 24">
+        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+        <path d="M3 6h18" />
+        <path d="M16 10a4 4 0 0 1-8 0" />
+      </symbol>
+      <symbol id="i-target" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="12" r="6" />
+        <circle cx="12" cy="12" r="2" />
+      </symbol>
+      <symbol id="i-package" viewBox="0 0 24 24">
+        <path d="m7.5 4.27 9 5.15" />
+        <path
+          d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"
+        />
+        <path d="m3.3 7 8.7 5 8.7-5" />
+        <path d="M12 22V12" />
+      </symbol>
+      <symbol id="i-recycle" viewBox="0 0 24 24">
+        <path
+          d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"
+        />
+        <path
+          d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"
+        />
+        <path d="m14 16-3 3 3 3" />
+        <path d="M8.293 13.596 7.196 9.5 3.1 10.598" />
+        <path
+          d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843"
+        />
+        <path d="m13.378 9.633 4.096 1.098 1.097-4.096" />
+      </symbol>
+    </svg>
+
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- ================================================================
+         HEADER
+         ================================================================ -->
+    <header class="site-header" id="topo">
+      <div class="container site-header__bar">
+        <a
+          href="#inicio"
+          class="brand"
+          aria-label="Sincronize — voltar ao início"
+        >
+          <img
+            src="assets/images/logo-sincronize.webp"
+            alt="Sincronize — Tecnologia em Tempo Real"
+            width="640"
+            height="210"
+          />
+        </a>
+
+        <nav class="nav" aria-label="Navegação principal">
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#solucoes">Soluções</a></li>
+            <li><a href="#leilao-social">Leilão Social</a></li>
+            <li><a href="#brecho">Brechó</a></li>
+            <li><a href="#patrocinadores">Patrocinadores</a></li>
+            <li><a href="#sobre">Sobre nós</a></li>
+            <li><a href="#contato">Preços</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a href="#doar-direto" class="link">Doar direto</a>
+          <a href="#parceiros" class="btn btn--outline btn--sm">Parceiros</a>
+          <a href="#cliente" class="btn btn--primary btn--sm">
+            <svg class="icon"><use href="#i-user-round" /></svg>Área do cliente
+          </a>
+        </div>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="menuMobile"
+        >
+          <svg class="icon icon--open"><use href="#i-menu" /></svg>
+          <svg class="icon icon--close"><use href="#i-x" /></svg>
+        </button>
+      </div>
+
+      <div class="mobile-menu" id="menuMobile">
+        <div>
+          <nav class="container" aria-label="Navegação mobile">
+            <ul>
+              <li>
+                <a href="#inicio"
+                  >Início <svg class="icon"><use href="#i-chevron-right" /></svg
+                ></a>
+              </li>
+              <li>
+                <a href="#solucoes"
+                  >Soluções
+                  <svg class="icon"><use href="#i-chevron-right" /></svg
+                ></a>
+              </li>
+              <li>
+                <a href="#leilao-social"
+                  >Leilão Social
+                  <svg class="icon"><use href="#i-chevron-right" /></svg
+                ></a>
+              </li>
+              <li>
+                <a href="#brecho"
+                  >Brechó Solidário
+                  <svg class="icon"><use href="#i-chevron-right" /></svg
+                ></a>
+              </li>
+              <li>
+                <a href="#patrocinadores"
+                  >Patrocinadores
+                  <svg class="icon"><use href="#i-chevron-right" /></svg
+                ></a>
+              </li>
+              <li>
+                <a href="#doar-direto"
+                  >Doar direto
+                  <svg class="icon"><use href="#i-chevron-right" /></svg
+                ></a>
+              </li>
+              <li>
+                <a href="#sobre"
+                  >Sobre nós
+                  <svg class="icon"><use href="#i-chevron-right" /></svg
+                ></a>
+              </li>
+              <li>
+                <a href="#contato"
+                  >Preços <svg class="icon"><use href="#i-chevron-right" /></svg
+                ></a>
+              </li>
+            </ul>
+            <div class="mobile-menu__ctas">
+              <a href="#parceiros" class="btn btn--outline">Parceiros</a>
+              <a href="#cliente" class="btn btn--primary"
+                ><svg class="icon"><use href="#i-user-round" /></svg>Área do
+                cliente</a
+              >
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <!-- ================================================================
+           HERO
+           ================================================================ -->
+      <section class="hero" id="inicio">
+        <div class="container hero__grid">
+          <div data-stagger>
+            <span class="pill pill--soft" data-reveal
+              ><span class="dot-pulse"></span>Tecnologia com propósito</span
+            >
+
+            <h1 data-reveal>
+              Tecnologia que conecta <span class="hl-green">pessoas</span> e
+              transforma
+              <span class="hl-orange"
+                >realidades<svg
+                  viewBox="0 0 200 12"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path d="M2 9 C 50 2, 150 2, 198 7" /></svg
+              ></span>
+            </h1>
+
+            <p class="hero__lead" data-reveal>
+              A Sincronize é uma plataforma completa para gerenciar projetos,
+              doações, pessoas e resultados, com tudo o que você precisa, em
+              tempo real.
+            </p>
+
+            <div class="hero__ctas" data-reveal>
+              <a href="#solucoes" class="btn btn--primary btn--lg">
+                <svg class="icon"><use href="#i-rocket" /></svg>Conheça as
+                soluções
+              </a>
+              <a href="#parceiros" class="btn btn--outline btn--lg">
+                <svg class="icon"><use href="#i-users-round" /></svg>Seja um
+                parceiro
+              </a>
+            </div>
+
+            <ul class="hero__features" data-reveal>
+              <li>
+                <span class="feature-ico"
+                  ><svg class="icon"><use href="#i-clock-3" /></svg></span
+                ><span>Mais organização</span>
+              </li>
+              <li>
+                <span
+                  class="feature-ico"
+                  style="--c: var(--blue-500); --bg: var(--blue-50)"
+                  ><svg class="icon"><use href="#i-users-round" /></svg></span
+                ><span>Gestão simplificada</span>
+              </li>
+              <li>
+                <span
+                  class="feature-ico"
+                  style="--c: var(--orange-500); --bg: var(--orange-50)"
+                  ><svg class="icon"><use href="#i-heart" /></svg></span
+                ><span>Mais impacto social</span>
+              </li>
+              <li>
+                <span class="feature-ico"
+                  ><svg class="icon"><use href="#i-shield-check" /></svg></span
+                ><span>Dados em tempo real</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="hero__media" data-reveal="zoom">
+            <div class="hero__photo">
+              <img
+                src="assets/images/hero-sala-de-aula.webp"
+                alt="Professor conduzindo uma aula para crianças em sala"
+                width="1400"
+                height="871"
+                fetchpriority="high"
+              />
+            </div>
+
+            <div class="float-card float-card--partner">
+              <img
+                src="assets/images/avatar-casa-sao-domingos.webp"
+                alt=""
+                width="256"
+                height="256"
+              />
+              <div>
+                <small>Instituição parceira</small>
+                <strong>Casa São Domingos Sávio</strong>
+              </div>
+            </div>
+
+            <div class="float-card float-card--count">
+              <div
+                class="avatar-stack"
+                data-avatar-stack
+                aria-hidden="true"
+              ></div>
+              <div>
+                <strong class="num" data-count-institutions>+20</strong>
+                <small>instituições na rede</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           DOE DIRETO — INSTITUIÇÕES PARCEIRAS (carrossel com foco central)
+           Os cards são gerados a partir de js/data.js → SITE.instituicoes
+           ================================================================ -->
+      <section
+        class="section partners"
+        id="doar-direto"
+        aria-labelledby="titulo-parceiros"
+      >
+        <div class="container" id="parceiros">
+          <header class="section-head" data-reveal>
+            <span class="eyebrow">Doe direto</span>
+            <h2 id="titulo-parceiros">Instituições parceiras</h2>
+            <p>
+              Escolha uma causa e fale diretamente com a instituição. Use as
+              setas ou arraste para conhecer todas.
+            </p>
+          </header>
+
+          <div
+            class="carousel"
+            data-carousel
+            data-loop
+            data-autoplay="5000"
+            data-reveal
+          >
+            <button
+              class="carousel__arrow carousel__arrow--prev"
+              type="button"
+              data-prev
+              aria-label="Instituição anterior"
+            >
+              <svg class="icon"><use href="#i-chevron-left" /></svg>
+            </button>
+
+            <div class="carousel__viewport">
+              <div
+                class="carousel__track"
+                data-track
+                data-render="instituicoes"
+                tabindex="0"
+                role="region"
+                aria-roledescription="carrossel"
+                aria-label="Instituições parceiras"
+              >
+                <noscript
+                  ><p>
+                    Ative o JavaScript para ver as instituições parceiras.
+                  </p></noscript
+                >
+              </div>
+            </div>
+
+            <button
+              class="carousel__arrow carousel__arrow--next"
+              type="button"
+              data-next
+              aria-label="Próxima instituição"
+            >
+              <svg class="icon"><use href="#i-chevron-right" /></svg>
+            </button>
+
+            <div class="carousel__bar">
+              <button
+                class="carousel__arrow"
+                type="button"
+                data-prev
+                aria-label="Instituição anterior"
+              >
+                <svg class="icon"><use href="#i-chevron-left" /></svg>
+              </button>
+              <div class="carousel__status" aria-live="polite">
+                <span
+                  ><span data-current>01</span>
+                  <small>/ <span data-total>00</span></small></span
+                >
+                <span class="carousel__progress"
+                  ><span data-progress></span
+                ></span>
+              </div>
+              <button
+                class="carousel__arrow"
+                type="button"
+                data-next
+                aria-label="Próxima instituição"
+              >
+                <svg class="icon"><use href="#i-chevron-right" /></svg>
+              </button>
+            </div>
+          </div>
+
+          <p class="partners__note" data-reveal>
+            <svg class="icon"><use href="#i-shield-check" /></svg>
+            A Sincronize facilita o contato. Confirme diretamente com cada
+            instituição os canais oficiais, os itens aceitos e os procedimentos
+            para doação.
+          </p>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           LEILÃO SOCIAL — cards gerados de js/data.js → SITE.leiloes
+           ================================================================ -->
+      <section
+        class="section auction"
+        id="leilao-social"
+        aria-labelledby="titulo-leilao"
+      >
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <span class="eyebrow">Novidade: Leilão Social Sincronize</span>
+            <h2 id="titulo-leilao">
+              Transforme grandes doações em um impacto ainda maior.
+            </h2>
+            <p>
+              Instituições parceiras utilizam nossa plataforma para leiloar
+              itens especiais. Participe dos leilões ativos ou traga o leilão da
+              sua ONG para a Sincronize, com total transparência e lances em
+              tempo real.
+            </p>
+          </header>
+
+          <div class="auction__grid" data-render="leiloes" data-stagger></div>
+
+          <div class="auction-cta" data-reveal>
+            <div class="auction-cta__text">
+              <span class="icon-box" style="--icon-bg: var(--orange-500)"
+                ><svg class="icon"><use href="#i-gavel" /></svg
+              ></span>
+              <div>
+                <h3>Sua instituição possui itens valiosos para arrecadação?</h3>
+                <p>
+                  Realize leilões virtuais com transparência e lances em tempo
+                  real.
+                </p>
+              </div>
+            </div>
+            <a
+              class="btn btn--light btn--lg"
+              data-wa="leilao"
+              href="https://wa.me/5583993228124"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Contrate a plataforma de leilão
+              <svg class="icon icon--move"><use href="#i-arrow-right" /></svg>
+            </a>
+          </div>
+          <p class="auction__disclaimer">
+            Itens, valores, instituições e quantidade de lances são exemplos
+            demonstrativos.
+          </p>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           BRECHÓ SOLIDÁRIO — cada brechó pertence a uma instituição.
+           Abas e vitrines geradas de js/data.js → SITE.brechos
+           ================================================================ -->
+      <section class="section thrift" id="brecho" aria-labelledby="titulo-brecho">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <span class="eyebrow">Brechó Solidário Sincronize</span>
+            <h2 id="titulo-brecho">
+              Moda e objetos com segunda chance, renda para quem precisa.
+            </h2>
+            <p>
+              Cada brechó é vinculado a uma instituição: as peças são doadas
+              para ela, vendidas aqui e todo o valor arrecadado vai para a
+              campanha daquela instituição.
+            </p>
+          </header>
+
+          <ol class="thrift-steps" data-stagger>
+            <li data-reveal>
+              <span class="icon-box" style="--icon-bg: var(--blue-500)"
+                ><svg class="icon"><use href="#i-package" /></svg
+              ></span>
+              <div>
+                <strong>1. Doação de peças</strong>
+                <p>A comunidade doa roupas, livros e objetos à instituição.</p>
+              </div>
+            </li>
+            <li data-reveal>
+              <span class="icon-box" style="--icon-bg: var(--green-500)"
+                ><svg class="icon"><use href="#i-recycle" /></svg
+              ></span>
+              <div>
+                <strong>2. Venda no brechó</strong>
+                <p>As peças ganham vitrine no brechó online da instituição.</p>
+              </div>
+            </li>
+            <li data-reveal>
+              <span class="icon-box" style="--icon-bg: var(--orange-500)"
+                ><svg class="icon"><use href="#i-heart-handshake" /></svg
+              ></span>
+              <div>
+                <strong>3. Renda para a causa</strong>
+                <p>O valor das vendas financia a campanha da instituição.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="thrift-shop" data-reveal>
+            <p class="thrift-shop__label" id="brecho-escolha">
+              Escolha o brechó que você quer apoiar:
+            </p>
+            <div
+              class="thrift-tabs"
+              role="tablist"
+              aria-labelledby="brecho-escolha"
+              data-render="brechoAbas"
+            ></div>
+            <div data-render="brechoPaineis">
+              <noscript
+                ><p>Ative o JavaScript para ver as peças do brechó.</p></noscript
+              >
+            </div>
+          </div>
+
+          <div class="auction-cta thrift-cta" data-reveal>
+            <div class="auction-cta__text">
+              <span class="icon-box" style="--icon-bg: var(--green-500)"
+                ><svg class="icon"><use href="#i-shopping-bag" /></svg
+              ></span>
+              <div>
+                <h3>Sua instituição recebe doações de roupas e objetos?</h3>
+                <p>
+                  Transforme essas doações em renda com um brechó online
+                  próprio, com vitrine, metas e prestação de contas.
+                </p>
+              </div>
+            </div>
+            <a
+              class="btn btn--light btn--lg"
+              data-wa="brecho"
+              href="https://wa.me/5583993228124"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Criar o brechó da minha instituição
+              <svg class="icon icon--move"><use href="#i-arrow-right" /></svg>
+            </a>
+          </div>
+          <p class="auction__disclaimer">
+            Peças, preços, campanhas e valores arrecadados são exemplos
+            demonstrativos.
+          </p>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           PATROCINADORES — gerados de js/data.js → SITE.patrocinadores
+           ================================================================ -->
+      <section
+        class="section sponsors"
+        id="patrocinadores"
+        aria-labelledby="titulo-patrocinadores"
+      >
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <span class="eyebrow">Patrocinadores</span>
+            <h2 id="titulo-patrocinadores">
+              Empresas que acreditam no impacto social.
+            </h2>
+            <p>
+              Nossos patrocinadores ajudam a manter os leilões, os brechós
+              solidários e a rede de instituições funcionando, sem custo para
+              quem mais precisa.
+            </p>
+          </header>
+
+          <div
+            class="sponsors__master"
+            data-render="patrocinadoresMaster"
+            data-stagger
+          ></div>
+
+          <ul
+            class="sponsors__grid"
+            data-render="patrocinadoresGrade"
+            data-stagger
+            aria-label="Patrocinadores e apoiadores"
+          ></ul>
+
+          <div class="auction-cta sponsors-cta" data-reveal>
+            <div class="auction-cta__text">
+              <span class="icon-box" style="--icon-bg: var(--blue-500)"
+                ><svg class="icon"><use href="#i-heart-handshake" /></svg
+              ></span>
+              <div>
+                <h3>Sua empresa quer apoiar essa rede?</h3>
+                <p>
+                  Coloque sua marca ao lado de instituições que transformam
+                  vidas, com cotas master, ouro ou de apoio.
+                </p>
+              </div>
+            </div>
+            <a
+              class="btn btn--light btn--lg"
+              data-wa="patrocinio"
+              href="https://wa.me/5583993228124"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Quero ser patrocinador
+              <svg class="icon icon--move"><use href="#i-arrow-right" /></svg>
+            </a>
+          </div>
+          <p class="auction__disclaimer">
+            Com exceção de Lourdinas e Microgames, os patrocinadores exibidos
+            são fictícios, apenas para demonstração.
+          </p>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SOLUÇÕES
+           ================================================================ -->
+      <section
+        class="section solutions"
+        id="solucoes"
+        aria-labelledby="titulo-solucoes"
+      >
+        <div class="container solutions__grid">
+          <div id="recursos">
+            <div data-reveal>
+              <span class="eyebrow eyebrow--light"
+                >Tecnologia que potencializa grandes causas</span
+              >
+              <h2 id="titulo-solucoes">Mais eficiência para o seu projeto.</h2>
+              <p class="solutions__lead">
+                Simplifique processos, organize informações e tenha mais
+                controle sobre o impacto das suas ações.
+              </p>
+            </div>
+
+            <ul class="solutions__list" data-stagger>
+              <li data-reveal>
+                <span class="icon-box" style="--icon-bg: var(--green-500)"
+                  ><svg class="icon">
+                    <use href="#i-calendar-check" /></svg></span
+                >Gestão de projetos e atividades
+              </li>
+              <li data-reveal>
+                <span class="icon-box" style="--icon-bg: var(--blue-500)"
+                  ><svg class="icon">
+                    <use href="#i-heart-handshake" /></svg></span
+                >Controle de doações financeiras e materiais
+              </li>
+              <li data-reveal>
+                <span class="icon-box" style="--icon-bg: var(--orange-500)"
+                  ><svg class="icon"><use href="#i-users-round" /></svg></span
+                >Cadastro de pessoas e voluntários
+              </li>
+              <li data-reveal>
+                <span class="icon-box" style="--icon-bg: #65a30d"
+                  ><svg class="icon">
+                    <use href="#i-chart-no-axes-combined" /></svg></span
+                >Relatórios de impacto e resultados
+              </li>
+            </ul>
+
+            <a href="#contato" class="btn btn--ghost-light" data-reveal>
+              Fale com um especialista
+              <svg class="icon icon--move"><use href="#i-arrow-right" /></svg>
+            </a>
+          </div>
+
+          <!-- Painel ilustrativo (números demonstrativos) -->
+          <div
+            class="dash"
+            data-reveal="right"
+            aria-label="Exemplo ilustrativo do painel da Sincronize"
+            role="img"
+          >
+            <div class="dash__window">
+              <div class="dash__top">
+                <i style="--c: #f87171"></i><i style="--c: #fbbf24"></i
+                ><i style="--c: #4ade80"></i>
+                <span class="dash__url">painel.sincronize.br</span>
+                <span class="dash__live"
+                  ><span class="dot-pulse"></span>Ao vivo</span
+                >
+              </div>
+              <div class="dash__body">
+                <div class="dash__side" aria-hidden="true">
+                  <span class="is-on"
+                    ><svg class="icon"><use href="#i-layout-dashboard" /></svg
+                    ><em>Visão geral</em></span
+                  >
+                  <span
+                    ><svg class="icon"><use href="#i-building-2" /></svg
+                    ><em>Instituições</em></span
+                  >
+                  <span
+                    ><svg class="icon"><use href="#i-heart" /></svg
+                    ><em>Doações</em></span
+                  >
+                  <span
+                    ><svg class="icon"><use href="#i-users-round" /></svg
+                    ><em>Voluntários</em></span
+                  >
+                  <span
+                    ><svg class="icon"><use href="#i-file-chart-column" /></svg
+                    ><em>Relatórios</em></span
+                  >
+                </div>
+                <div class="dash__main" aria-hidden="true">
+                  <p class="dash__title">
+                    Resumo de impacto <small>Últimos 7 meses</small>
+                  </p>
+                  <div class="dash__kpis">
+                    <div
+                      class="dash__kpi"
+                      style="--bg: var(--blue-50); --c: var(--navy-800)"
+                    >
+                      <small>Doações recebidas</small>
+                      <strong data-count-to="48750" data-prefix="R$ "
+                        >R$ 48.750</strong
+                      >
+                      <em>↑ 18%</em>
+                    </div>
+                    <div
+                      class="dash__kpi"
+                      style="--bg: var(--green-50); --c: var(--green-600)"
+                    >
+                      <small>Voluntários ativos</small>
+                      <strong data-count-to="246">246</strong>
+                      <em>↑ 32</em>
+                    </div>
+                  </div>
+                  <div class="dash__chart">
+                    <span style="--i: 0; --h: 28%; --c: #93c5fd"></span>
+                    <span style="--i: 1; --h: 36%; --c: #60a5fa"></span>
+                    <span style="--i: 2; --h: 45%; --c: #4ade80"></span>
+                    <span style="--i: 3; --h: 54%; --c: #22c55e"></span>
+                    <span style="--i: 4; --h: 66%; --c: #14b8a6"></span>
+                    <span style="--i: 5; --h: 78%; --c: #1f82b8"></span>
+                    <span style="--i: 6; --h: 94%; --c: #ff7900"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="dash__toast" aria-hidden="true">
+              <span class="icon-box" style="--icon-bg: var(--green-500)"
+                ><svg class="icon"><use href="#i-file-chart-column" /></svg
+              ></span>
+              <div>
+                <small>Agora mesmo</small
+                ><strong>Relatório mensal gerado</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SOBRE
+           ================================================================ -->
+      <section class="section about" id="sobre" aria-labelledby="titulo-sobre">
+        <div class="container">
+          <div class="about__card">
+            <div class="about__visual" data-reveal="left">
+              <img
+                class="about__logo"
+                src="assets/images/logo-icon.png"
+                alt=""
+                width="512"
+                height="512"
+                loading="lazy"
+              />
+              <ul class="about__values">
+                <li>
+                  <svg class="icon"><use href="#i-shield-check" /></svg
+                  >Conformidade com a LGPD
+                </li>
+                <li>
+                  <svg class="icon"><use href="#i-radio" /></svg>Indicadores em
+                  tempo real
+                </li>
+                <li>
+                  <svg class="icon"><use href="#i-sparkles" /></svg>Interface
+                  intuitiva
+                </li>
+                <li>
+                  <svg class="icon"><use href="#i-heart" /></svg>Foco no cuidado
+                  humano
+                </li>
+              </ul>
+            </div>
+
+            <div class="about__text" data-reveal>
+              <span class="eyebrow">Quem somos</span>
+              <h2 id="titulo-sobre">Sobre a Sincronize</h2>
+              <p>
+                Na <strong>Sincronize</strong>, acreditamos que a tecnologia tem
+                o poder de conectar pessoas, otimizar processos e transformar
+                realidades.
+              </p>
+              <p>
+                Nascida do encontro entre inovação tecnológica e compromisso
+                social, nossa startup é especializada no desenvolvimento de
+                soluções Web inteligentes voltadas para a gestão do Terceiro
+                Setor. Nosso objetivo é simplificar a rotina de instituições
+                filantrópicas e ONGs, oferecendo ferramentas completas que
+                integram desde o acompanhamento pedagógico e nutricional de
+                assistidos até o controle administrativo e a captação de
+                recursos.
+              </p>
+              <p>
+                Combinando segurança, conformidade com a LGPD e uma interface
+                intuitiva, desenvolvemos softwares que transformam dados em
+                indicadores estratégicos em tempo real. Assim, permitimos que os
+                gestores tomem decisões mais ágeis, transparentes e assertivas,
+                garantindo que o foco principal permaneça onde realmente
+                importa: o cuidado e o desenvolvimento humano.
+              </p>
+              <a
+                class="btn btn--primary btn--lg"
+                data-wa="contato"
+                href="https://wa.me/5583993228124"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Fale com a Sincronize
+                <svg class="icon icon--diag">
+                  <use href="#i-arrow-up-right" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================================================================
+         FOOTER
+         ================================================================ -->
+    <footer class="site-footer" id="contato">
+      <div class="container site-footer__grid">
+        <div>
+          <a
+            href="#inicio"
+            class="footer-brand"
+            aria-label="Sincronize — voltar ao início"
+          >
+            <img
+              src="assets/images/logo-icon-192.png"
+              alt=""
+              width="48"
+              height="48"
+              loading="lazy"
+            />
+            <span
+              ><strong>SINCRONIZE</strong
+              ><small>Tecnologia em tempo real</small></span
+            >
+          </a>
+          <p class="site-footer__about">
+            Soluções Web para a gestão do Terceiro Setor: projetos, doações,
+            pessoas e resultados em um só lugar.
+          </p>
+        </div>
+
+        <div>
+          <h2>Fale com a gente</h2>
+          <div class="contact-list">
+            <a
+              data-wa="contato"
+              href="https://wa.me/5583993228124"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg class="icon"><use href="#i-phone" /></svg>(83) 99322-8124
+            </a>
+            <a href="mailto:inc@sincronize.br"
+              ><svg class="icon"><use href="#i-mail" /></svg
+              >inc@sincronize.br</a
+            >
+            <p>Planos e preços sob consulta.</p>
+          </div>
+        </div>
+
+        <div>
+          <h2>Redes sociais</h2>
+          <div class="social">
+            <a
+              data-net="facebook"
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                <path
+                  d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.51 1.5-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46H15.2c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z"
+                />
+              </svg>
+            </a>
+            <a
+              data-net="instagram"
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="6" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="18"
+                  cy="6"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </a>
+            <a
+              data-net="linkedin"
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                <path
+                  d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.75H4.98V9.2h2.95v9.55ZM6.45 7.9a1.71 1.71 0 1 1 0-3.42 1.71 1.71 0 0 1 0 3.42Zm12.3 10.85H15.8V14.1c0-1.11-.02-2.53-1.54-2.53-1.55 0-1.79 1.2-1.79 2.45v4.73H9.52V9.2h2.83v1.3h.04c.39-.74 1.36-1.53 2.8-1.53 3 0 3.56 1.98 3.56 4.55v5.23Z"
+                />
+              </svg>
+            </a>
+            <a
+              data-net="whatsapp"
+              data-wa="contato"
+              href="https://wa.me/5583993228124"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                <path
+                  d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.38 0 0 5.38 0 12c0 2.12.56 4.19 1.62 6.01L0 24l6.14-1.61A11.94 11.94 0 0 0 12 24c6.62 0 12-5.38 12-12 0-3.2-1.25-6.21-3.5-8.5ZM12 21.97c-1.8 0-3.56-.48-5.1-1.39l-.36-.21-3.64.95.97-3.55-.23-.37A9.9 9.9 0 0 1 2.03 12C2.03 6.5 6.5 2.03 12 2.03c2.66 0 5.16 1.04 7.04 2.93A9.9 9.9 0 0 1 21.97 12c0 5.5-4.47 9.97-9.97 9.97Zm5.47-7.46c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.08 4.48.71.3 1.26.48 1.69.62.71.23 1.35.2 1.86.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <div class="container">
+          <p>
+            © <span data-year>2026</span> Sincronize. Tecnologia em Tempo Real.
+            Todos os direitos reservados.
+          </p>
+          <p>
+            <svg class="icon"><use href="#i-heart" /></svg> Juntos por um futuro
+            melhor!
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts: dados → componentes → inicialização -->
+    <script src="js/data.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
