@@ -1,5 +1,11 @@
 # Sincronize — Tecnologia em Tempo Real
 
+Site institucional da Sincronize, uma startup de soluções Web para a gestão de ONGs e instituições filantrópicas. O site apresenta a plataforma, aproxima doadores das instituições parceiras e divulga o Leilão Social.
+
+Projeto desenvolvido por estudantes do Curso Técnico em Informática das Lourdinas (TECINFO) para o DLEI — Desafio Lourdinas de Empreendedorismo.
+
+Tecnologias: HTML5, CSS3 e JavaScript, sem frameworks e sem etapa de build.
+
 A **Sincronize** é uma empresa focada em ajudar instituições de caridade, ONGs, paróquias e projetos sociais
 em duas frentes:
 
