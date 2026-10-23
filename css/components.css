@@ -1,0 +1,284 @@
+/* ==========================================================================
+   COMPONENTES — peças reutilizáveis em qualquer seção
+   ========================================================================== */
+
+/* ---------- Botões ---------- */
+.btn {
+  --btn-bg: var(--navy-800);
+  --btn-fg: #fff;
+  --btn-bd: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: 0 var(--space-6);
+  border: 2px solid var(--btn-bd);
+  border-radius: var(--radius-full);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition:
+    transform var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out),
+    background-color var(--dur-fast),
+    color var(--dur-fast),
+    border-color var(--dur-fast);
+}
+.btn .icon { width: 1.1em; height: 1.1em; transition: transform var(--dur) var(--ease-out); }
+.btn:hover { transform: translateY(-2px); }
+.btn:hover .icon--move { transform: translateX(3px); }
+.btn:hover .icon--diag { transform: translate(2px, -2px); }
+.btn:active { transform: translateY(0) scale(0.98); }
+
+.btn--primary { --btn-bg: var(--orange-500); box-shadow: var(--shadow-orange); }
+.btn--primary:hover { --btn-bg: var(--orange-600); }
+.btn--navy:hover { --btn-bg: var(--navy-900); box-shadow: var(--shadow-md); }
+.btn--outline { --btn-bg: transparent; --btn-fg: var(--navy-800); --btn-bd: var(--navy-800); }
+.btn--outline:hover { --btn-bg: var(--navy-800); --btn-fg: #fff; }
+.btn--light { --btn-bg: #fff; --btn-fg: var(--navy-800); }
+.btn--light:hover { --btn-bg: var(--blue-50); }
+.btn--ghost-light { --btn-bg: transparent; --btn-fg: #fff; --btn-bd: rgba(255, 255, 255, 0.45); }
+.btn--ghost-light:hover { --btn-bg: #fff; --btn-fg: var(--navy-800); --btn-bd: #fff; }
+.btn--sm { min-height: 40px; padding: 0 var(--space-4); font-size: var(--fs-xs); }
+.btn--lg { min-height: 56px; padding: 0 var(--space-8); font-size: var(--fs-base); }
+.btn--block { width: 100%; }
+
+/* ---------- Cabeçalho de seção ---------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange-500);
+}
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+.eyebrow--light { color: #8fd3ff; }
+
+.section-head {
+  max-width: 720px;
+  margin: 0 auto var(--space-12);
+  text-align: center;
+}
+.section-head h2 { margin-top: var(--space-3); font-size: var(--fs-h2); font-weight: 800; }
+.section-head p { margin-top: var(--space-4); font-size: var(--fs-md); }
+
+/* ---------- Pílulas / chips ---------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+}
+.pill .icon { width: 14px; height: 14px; }
+.pill--soft { background: #fff; color: var(--green-600); border: 1px solid #cdeedd; box-shadow: var(--shadow-sm); }
+.pill--live { background: var(--red-600); color: #fff; }
+.pill--timer { background: rgba(3, 28, 51, 0.82); color: #fff; backdrop-filter: blur(6px); font-variant-numeric: tabular-nums; }
+
+.dot-pulse {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.dot-pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: currentColor;
+  animation: ping 1.6s var(--ease-out) infinite;
+}
+@keyframes ping { 75%, 100% { transform: scale(2.6); opacity: 0; } }
+
+/* ---------- Ícone em caixa ---------- */
+.icon-box {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  color: #fff;
+  background: var(--icon-bg, var(--navy-800));
+}
+.icon-box .icon { width: 24px; height: 24px; }
+
+/* ==========================================================================
+   CARROSSEL COM FOCO CENTRAL (FocusCarousel — js/carousel.js)
+   O JS escreve em cada slide:
+     --o   → posição relativa ao centro (…-2, -1, 0, 1, 2…), contínua no scroll
+     --ao  → |--o| limitado a 2
+   Todo o visual (escala, opacidade, rotação) é derivado aqui no CSS.
+   ========================================================================== */
+.carousel {
+  --slide-w: clamp(250px, 70vw, 300px);
+  --slide-gap: clamp(12px, 2vw, 24px);
+  position: relative;
+}
+
+.carousel__viewport {
+  position: relative;
+  /* esmaece as bordas — reforça que existe conteúdo além */
+  /* ocupa a largura total da tela, mesmo dentro do .container */
+  margin-inline: calc(50% - 50vw);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.carousel__track {
+  position: relative;
+  display: flex;
+  gap: var(--slide-gap);
+  padding: var(--space-10) calc(50% - var(--slide-w) / 2) var(--space-12);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  perspective: 1400px;
+  outline: none;
+}
+.carousel__track::-webkit-scrollbar { display: none; }
+.carousel__track.is-jumping { scroll-snap-type: none; }
+.carousel__track.is-jumping .carousel__slide { transition: none; }
+
+.carousel__slide {
+  --o: 0;
+  --ao: 0;
+  flex: 0 0 var(--slide-w);
+  scroll-snap-align: center;
+  transform:
+    rotateY(calc(var(--o) * -14deg))
+    scale(calc(1 - var(--ao) * 0.09));
+  opacity: calc(1 - var(--ao) * 0.4);
+  filter: saturate(calc(1 - var(--ao) * 0.5)) blur(calc(var(--ao) * 0.6px));
+  transform-origin: center center;
+  transition: opacity var(--dur-fast) linear;
+  will-change: transform, opacity;
+}
+
+/* Setas */
+.carousel__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--navy-800);
+  box-shadow: 0 12px 28px -8px rgba(7, 52, 94, 0.55), 0 0 0 6px rgba(255, 255, 255, 0.85);
+  transform: translateY(-50%);
+  transition: transform var(--dur) var(--ease-spring), background-color var(--dur-fast), opacity var(--dur);
+}
+.carousel__arrow .icon { width: 26px; height: 26px; }
+.carousel__arrow:hover { background: var(--orange-500); transform: translateY(-50%) scale(1.08); }
+.carousel__arrow:active { transform: translateY(-50%) scale(0.95); }
+.carousel__arrow[disabled] { opacity: 0.35; pointer-events: none; }
+/* Centralizadas no espaço entre o card em foco e os vizinhos esmaecidos */
+.carousel__arrow--prev { right: calc(50% + var(--slide-w) / 2 + var(--slide-gap) / 2 - 28px); }
+.carousel__arrow--next { left: calc(50% + var(--slide-w) / 2 + var(--slide-gap) / 2 - 28px); }
+
+/* Barra inferior: contador + progresso (+ setas no mobile) */
+.carousel__bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: calc(var(--space-4) * -1);
+}
+.carousel__bar .carousel__arrow {
+  position: static;
+  width: 44px;
+  height: 44px;
+  transform: none;
+  box-shadow: var(--shadow-md);
+}
+.carousel__bar .carousel__arrow .icon { width: 22px; height: 22px; }
+.carousel__bar .carousel__arrow:hover { transform: scale(1.06); }
+
+.carousel__status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 180px;
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--navy-800);
+  font-variant-numeric: tabular-nums;
+}
+.carousel__status small { color: var(--muted); font-weight: 600; }
+.carousel__progress {
+  position: relative;
+  flex: 1;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--line);
+  overflow: hidden;
+}
+.carousel__progress span {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--brand-gradient);
+  transform-origin: left;
+  transform: scaleX(var(--p, 0));
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.carousel__bar .carousel__arrow { display: grid; }
+.carousel > .carousel__arrow { display: none; }
+
+@media (min-width: 768px) {
+  .carousel { --slide-w: 300px; --slide-gap: 76px; }
+  .carousel > .carousel__arrow { display: grid; }
+  .carousel__bar .carousel__arrow { display: none; }
+}
+@media (min-width: 1280px) {
+  .carousel { --slide-w: 320px; --slide-gap: 84px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel__slide { transform: scale(calc(1 - var(--ao) * 0.06)); filter: none; }
+}
+
+/* ---------- Ícones sociais ---------- */
+.social { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.social a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transition: transform var(--dur) var(--ease-spring), background-color var(--dur-fast), border-color var(--dur-fast);
+}
+.social svg { width: 20px; height: 20px; }
+.social a:hover { transform: translateY(-3px); border-color: transparent; background: var(--hover, var(--orange-500)); }
+.social [data-net="facebook"]  { --hover: #1877f2; }
+.social [data-net="instagram"] { --hover: #c13584; }
+.social [data-net="linkedin"]  { --hover: #0a66c2; }
+.social [data-net="whatsapp"]  { --hover: #25d366; }
