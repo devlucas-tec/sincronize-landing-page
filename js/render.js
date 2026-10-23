@@ -190,7 +190,8 @@
   function sponsorTile(p) {
     return `
       <li class="sponsor-tile" data-cota="${p.cota}" data-reveal>
-        <div class="sponsor-tile__logo${p.fundoEscuro ? " is-dark" : ""}">${sponsorLogo(p)}</div>
+        <div class="sponsor-tile__logo${p.logo ? " has-img" : ""}${p.fundoEscuro ? " is-dark" : ""}">${sponsorLogo(p)}</div>
+        ${p.descricao ? `<p class="sponsor-tile__desc">${escapeHTML(p.descricao)}</p>` : ""}
         <span class="sponsor-tier">${SITE.cotasPatrocinio[p.cota]}</span>
       </li>`;
   }

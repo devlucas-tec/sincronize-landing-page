@@ -141,6 +141,7 @@ window.SITE = {
    * - cota: "master" (card grande com descrição) | "ouro" | "apoio" (grade de logos)
    * - logo (opcional): imagem em assets/images/; sem logo, o card mostra o nome com `icone` e `cor`
    * - fundoEscuro: true para logos claras/brancas (ex.: Microgames)
+   * - descricao (opcional nas cotas ouro/apoio): frase curta exibida abaixo da logo
    * Os patrocinadores sem logo são FICTÍCIOS, apenas para demonstração.
    */
   cotasPatrocinio: {
@@ -153,9 +154,11 @@ window.SITE = {
       descricao: "Educação e valores caminhando juntos: apoia os brechós e as campanhas de material escolar da rede." },
     { nome: "Microgames", cota: "master", logo: "assets/images/sponsor-microgames.png", fundoEscuro: true,
       descricao: "Tecnologia e diversão a serviço da comunidade: apoia os leilões sociais e as oficinas para jovens." },
-    { nome: "Horizonte Construções", cota: "ouro", icone: "building-2", cor: "#0d4677" },
+    { nome: "Simplifica Tecnologia", cota: "ouro", logo: "assets/images/sponsor-simplifica.png",
+      descricao: "Soluções que simplificam a gestão da sua empresa, em mais de 50 segmentos." },
+    { nome: "Double L 3D", cota: "ouro", logo: "assets/images/sponsor-double-l-3d.png",
+      descricao: "Impressão 3D e peças personalizadas, por Laura e Lucas. Duas mentes, infinitas criações!" },
     { nome: "Vida+ Farmácias", cota: "ouro", icone: "heart-pulse", cor: "#17915a" },
-    { nome: "Conecta Telecom", cota: "ouro", icone: "radio", cor: "#1f82b8" },
     { nome: "Mercadinho Boa Vizinhança", cota: "apoio", icone: "shopping-bag", cor: "#e66d00" },
     { nome: "Ótica Visão Clara", cota: "apoio", icone: "sparkles", cor: "#9333ea" },
     { nome: "Lar Doce Imóveis", cota: "apoio", icone: "house", cor: "#a16207" },

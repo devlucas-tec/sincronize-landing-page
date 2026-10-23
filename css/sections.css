@@ -831,6 +831,12 @@ html:not(.js) .hero h1 .hl-orange path { animation: draw 1.1s 0.6s var(--ease-ou
 .sponsor-tile[data-cota="ouro"] .sponsor-tier { color: #a16207; }
 .sponsor-tile__logo { display: grid; place-items: center; min-height: 64px; width: 100%; border-radius: var(--radius-sm); }
 .sponsor-tile__logo img { max-height: 56px; width: auto; }
+/* Logos reais (quadradas, com texto) precisam de mais altura para serem legíveis */
+.sponsor-tile__logo.has-img { min-height: 120px; }
+.sponsor-tile__logo.has-img img { max-height: 120px; mix-blend-mode: multiply; /* some o fundo branco da imagem */ }
+.sponsor-tile__logo { flex: 1; }
+.sponsor-tile__desc { font-size: var(--fs-xs); color: var(--text); }
+.sponsor-tile .sponsor-tier { margin-top: auto; }
 
 /* Marca tipográfica (patrocinadores sem logo) — fica em tons de cinza até o hover */
 .sponsor-wordmark {
